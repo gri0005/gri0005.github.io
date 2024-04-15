@@ -1,5 +1,6 @@
+/* cute little gradient background for a bit of under-the-radar variation */
 body {
-  background-image: -moz-radial-gradient(#fff, #ded9e2);
+  background-image: -moz-radial-gradient(#fff, #c9c0d1);
 }
 
 h1 {
@@ -50,6 +51,15 @@ a:hover {
   color: rgb(15, 15, 85);
 }
 
+/* parent div for formatting text grid section and graphics
+ div  next to each other */
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+/* grid display for the q & a layout */
 section {
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -59,6 +69,7 @@ section {
   margin-bottom: 4rem;
 }
 
+/* flex display for the list so that it's more a cloud of items than a vertical list*/
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -66,18 +77,24 @@ ul {
   justify-content: space-around;
 }
 
+/* soccer action li class */
 .so {
   color: rgb(102, 55, 55);
 }
 
+/* li class for clicking "discover" button. highlighted
+ because this is where the site is clearly trying to 
+ lead the user to */
 .consume {
   color: rgb(255, 61, 61);
 }
 
+/* li class for navigational actions */
 .navi {
   color: rgb(34, 73, 96);
 }
 
+/* li class for mousover tree action */
 .tree {
   color: rgb(20, 68, 20);
 }
@@ -98,12 +115,7 @@ li {
   border-width: 1px;
 }
 
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
+/* div to hold all the images */
 .graphic {
   max-width: 20%;
   display: flex;
@@ -112,4 +124,5 @@ li {
   justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 4rem;
+  gap: 0.7rem;
 }
