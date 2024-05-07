@@ -20,3 +20,14 @@ function pauseNotifAudio() {
   console.log(notifAudio);
   notifAudio.pause();
 }
+
+const popAudio = document.querySelector("#pop-audio");
+console.log(popAudio);
+const popButton = document.querySelector("#pop-button");
+console.log(popButton);
+popButton.addEventListener("click", popPlay);
+
+function popPlay() {
+  console.log("popping...");
+  popAudio.play();
+}
