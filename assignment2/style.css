@@ -1,0 +1,145 @@
+:root {
+  --primary-bg-color: #f4f4f4;
+  --text-color: #333;
+  --main-bg-color: #333;
+  --main-text-color: #fff;
+  --main-btn-bg-color: #2ca955;
+}
+
+body,
+h1,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Add additional styles as needed */
+
+/* Create a container for the main content */
+.container {
+  max-width: 1000px;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Header styling */
+header {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+/* Navigation styling */
+nav {
+  margin-top: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+/* Media player styling */
+.media-player {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.media-player video {
+  max-width: 100%;
+}
+
+.custom-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 10px;
+  width: 100%;
+}
+
+#play-pause-btn {
+  width: 6rem;
+  height: 6rem;
+  background-color: var(--main-btn-bg-color);
+  color: var(--main-text-color);
+  border: solid;
+  border-color: #a3bdab;
+  border-width: 2px;
+  border-radius: 50%;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 6rem;
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+#play-pause-img {
+  width: 70%;
+  margin: auto;
+}
+
+#play-pause-btn:hover {
+  background-color: #8ad2a2;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: var(--main-bg-color);
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+#progress-bar-empty {
+  height: 10px;
+  background-color: green;
+  width: 100%;
+  transition: width 0.5s ease;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #8ad2a2;
+}
+
+#progress-bar-fill {
+  height: 10px;
+  background-color: rgba(255, 0, 0, 0);
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+/* Footer styling */
+footer {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+}
