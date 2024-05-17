@@ -143,3 +143,13 @@ footer {
   padding: 10px 0;
   width: 100%;
 }
+
+#timer-select {
+  background-color: #2ca955;
+  border-radius: 5px;
+  border-color: #8ad2a2;
+  border-style: solid;
+  height: 3rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}

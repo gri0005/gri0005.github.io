@@ -15,16 +15,16 @@
       <h1>Media Player Website</h1>
     </header>
 
-    <!-- Navigation Section -->
+    <!-- Navigation Section
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Videos</a></li>
         <li><a href="#">Music</a></li>
         <li><a href="#">Playlists</a></li>
-        <!-- Add or remove navigation items as needed -->
+        Add or remove navigation items as needed
       </ul>
-    </nav>
+    </nav> -->
 
     <!-- Main Content Section -->
     <main class="container">
@@ -36,7 +36,23 @@
             type="audio/mp3"
           />
         </audio>
-        <button id="play-pause-btn" onclick="togglePlayPause()">
+
+        <select name="select" id="timer-select">
+          <option value="0">Select Time</option>
+          <option value="15">15 Minutes</option>
+          <option value="30">30 Minutes</option>
+          <option value="45">45 Minutes</option>
+          <option value="60">1 Hour</option>
+          <option value="90">1.5 Hours</option>
+          <option value="120">2 Hours</option>
+          <option value="150">2.5 Hours</option>
+          <option value="180">3 Hours</option>
+          <option value="210">3.5 Hours</option>
+          <option value="240">4 Hours</option>
+        </select>
+        <p id="timer-info">timer is set for...</p>
+        <p id="time-remaining">time remaining is...</p>
+        <button id="play-pause-btn">
           <img
             id="play-pause-img"
             src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
