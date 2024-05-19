@@ -6,8 +6,8 @@ const progressBarEmpty = document.querySelector("#progress-bar-empty");
 const timerTimeSelector = document.querySelector("#timer-select");
 const timerInfo = document.querySelector("#timer-info");
 const countdownDisplay = document.querySelector("#time-remaining");
+let myInt;
 console.log(timerInfo.textContent);
-let irlTime = 0;
 
 // displays countdown length
 timerTimeSelector.addEventListener("change", setTimerText);
@@ -20,21 +20,30 @@ playPauseBtn.addEventListener("click", togglePlayPause);
 function togglePlayPause() {
   if (audio.paused || audio.ended) {
     audio.play();
-    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/pause--v1.png";
+    playPauseImg.src = "icons8-stop-90.png";
 
-    var timerDuration = 60 * timerTimeSelector.value;
-    startTimer(timerDuration, countdownDisplay);
+    audio.addEventListener("timeupdate", updateProgressBar);
+
+    playPauseBtn.classList.add("inprog");
+    console.log(playPauseBtn.classList);
   }
 
-  // else {
-  //   audio.pause();
-  //   playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v1.png";
-  // }
-  const dateTime = new Date();
-  let startTime = dateTime.getTime();
+  // Stop and reset everything:
+  else {
+    audio.pause();
+    audio.currentTime = 0;
+    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v1.png";
+    playPauseBtn.classList.remove("inprog");
+    console.log(playPauseBtn.classList);
 
-  audio.addEventListener("timeupdate", updateProgressBar);
+    playPauseBtn.classList.add("noprog");
+    console.log(playPauseBtn.classList);
+  }
+
+  decidingTimer();
 }
+
+// customised progress bar:
 
 function updateProgressBar() {
   const value = (audio.currentTime / audio.duration) * 100;
@@ -42,15 +51,25 @@ function updateProgressBar() {
   progressBarEmpty.style.width = 100 - value + "%";
 }
 
-// Add other functionalities here
+// timer function fml feed me lunch
 
-function startTimer(timerDuration, countdownDisplay) {
-  var timer = timerDuration,
-    hours,
+function decidingTimer() {
+  if ((playPauseBtn.classList = "inprog")) {
+    var count = 60 * 0.5,
+      display = countdownDisplay;
+    console.log("commencing timer");
+    startTimer(count, display);
+  } else {
+    clearInterval(intervalId);
+    console.log("clearing timer");
+  }
+}
+
+function startTimer(duration, display) {
+  var timer = duration,
     minutes,
     seconds;
-
-  setInterval(function () {
+  var intervalId = setInterval(function () {
     hours = parseInt(timer / (60 * 60), 10);
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
@@ -58,6 +77,7 @@ function startTimer(timerDuration, countdownDisplay) {
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
+
     if (hours > 0) {
       countdownDisplay.textContent =
         hours + ":" + (minutes == 60 ? "00" : minutes) + ":" + seconds;
@@ -65,9 +85,28 @@ function startTimer(timerDuration, countdownDisplay) {
       countdownDisplay.textContent = minutes + ":" + seconds;
     }
 
-    // resets timer at the end
     if (--timer < 0) {
-      timer = timerDuration;
+      timer = duration;
+      playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v1.png";
     }
   }, 1000);
 }
+
+// }
+
+//   document
+//     .getElementsByClassName("inprog")
+//     .addEventListener("click", function () {
+//       clearInterval(intervalId);
+//     });
+// }
+
+// window.onload = function () {
+//   var count = 60 * 0.5,
+//     display = countdownDisplay;
+//   // display.textContent = "00:"+count;
+//   // document.getElementsByClassName("noprog")
+//   //   .addEventListener("click", function () {
+//   //     startTimer(count, display);
+//   //   });
+// };
