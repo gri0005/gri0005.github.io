@@ -20,40 +20,67 @@
       <h1>Media Player Website</h1>
     </header>
 
-    <!-- Navigation Section
-      Decided not to use this. The more "simple" the site,
-       the better for study purposes - less distractions.
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Videos</a></li>
-        <li><a href="#">Music</a></li>
-        <li><a href="#">Playlists</a></li>
-        Add or remove navigation items as needed
-      </ul>
-    </nav> -->
-
     <!-- Main Content Section -->
     <main class="container">
-      <!-- Media Player Section -->
+      <!-- Media Player Section 
+           there's a lack of controls because it's intended for study, so the less 
+           time user spends fiddling around with adjusting volume, etc. the better. I have 
+           set the volume at a reasonable level so the user doesn't have to bother about it.
+          The tracks are all set to looping so that they will continue to repeat as long as 
+          the timer is still counting down. There's no fanfare at the end, because if someone 
+          is locked in working, a fanfare might be disruptive.-->
       <div class="media-player">
+        <!-- primary audio track -->
         <audio id="custom-audio-player" loop>
           <source
             src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/erokia_ambient-wave-56-msfxp7-78.mp3"
             type="audio/mp3"
           />
         </audio>
-      </div>
 
-      <div class="media-player">
+        <!-- ambient sfx tracks -->
         <audio id="bird-sound" loop>
-          <source src="audio/birds.wav" type="audio/mp3" />
+          <source src="audio/birds.mp3" type="audio/mp3" />
+        </audio>
+
+        <audio id="waves-sound" loop>
+          <source src="audio/waves.mp3" type="audio/mp3" />
+        </audio>
+
+        <audio id="trees-sound" loop>
+          <source src="audio/trees.mp3" type="audio/mp3" />
+        </audio>
+
+        <audio id="rain-sound" loop>
+          <source src="audio/rain.mp3" type="audio/mp3" />
         </audio>
       </div>
-      <button class="ambs" id="amb-bird-btn">
-        <img id="amb-bird-img" src="icons8-bird-30.png" alt="Play Button" />
-      </button>
 
+      <!-- ambient sfx toggle buttons -->
+      <div class="amb-btns">
+        <button class="ambs" id="amb-waves-btn">
+          <img
+            id="amb-waves-img"
+            src="icons8-tsunami-30.png"
+            alt="Waves Button"
+          />
+        </button>
+        <button class="ambs" id="amb-trees-btn">
+          <img
+            id="amb-trees-img"
+            src="icons8-tree-30(1).png"
+            alt="Trees Button"
+          />
+        </button>
+        <button class="ambs" id="amb-rain-btn">
+          <img id="amb-rain-img" src="icons8-water-30.png" alt="Rain Button" />
+        </button>
+        <button class="ambs" id="amb-bird-btn">
+          <img id="amb-bird-img" src="icons8-bird-30.png" alt="Bird Button" />
+        </button>
+      </div>
+
+      <!-- timer section -->
       <div class="time-controls">
         <p>How long would you like to set the timer for?</p>
 
@@ -83,12 +110,11 @@
           />
         </button>
       </div>
+
+      <!-- progress bar -->
       <div class="custom-controls">
-        <!-- add the missing buttons or functionality here -->
-        <!-- <div class="progress-bar"> -->
         <span id="progress-bar-empty"></span>
         <span id="progress-bar-fill"></span>
-        <!-- </div> -->
       </div>
     </main>
 
@@ -99,6 +125,10 @@
       <a href="https://icons8.com">Icons8</a>
       <a href="https://icons8.com/icon/91463/stop">Stop</a> icon by
       <a href="https://icons8.com">Icons8</a>
+      <a href="https://icons8.com/icon/TgYOvWn9rSYS/budgie">Bird</a> icon by
+      <a href="https://icons8.com">Icons8</a>
+      <a href="https://freesound.org/s/159736/">Bird</a> sounds via
+      <a href="https://freesound.org">Freesound.org</a>
     </footer>
   </body>
 </html>
