@@ -153,14 +153,6 @@ function togglePlayPause() {
   }
 }
 
-// customised shrinking progress bar, linked to timer not audio:
-function updateProgressBar(timer) {
-  console.log(intervalID);
-  const value = (timer / timerDuration) * 100;
-  progressBarEmpty.style.width = value + "%";
-  progressBarFill.style.width = 100 - value + "%";
-}
-
 // start the timer
 function startTimer(duration) {
   var timer = duration,
@@ -187,10 +179,17 @@ function startTimer(duration) {
     // stop if it reaches 0
     if (--timer < 0) {
       togglePlayPause();
+      timerInfo.textContent = "Great work! Set another timer?";
+      // reset the progress bar
+      progressBarEmpty.style.width = "100%";
+      progressBarFill.style.width = "0%";
+    } else {
+      // update the progress bar!
+      // customised shrinking progress bar, linked to timer not audio:
+      const value = (timer / timerDuration) * 100;
+      progressBarEmpty.style.width = value + "%";
+      progressBarFill.style.width = 100 - value + "%";
     }
-
-    // update the progress bar!
-    updateProgressBar(timer);
   }, 1000);
 }
 
@@ -215,5 +214,9 @@ function resetTimer(duration) {
   } else {
     countdownDisplay.textContent = minutes + ":" + seconds;
   }
-  updateProgressBar(timer);
+
+  // update the progress bar
+  const value = (timer / timerDuration) * 100;
+  progressBarEmpty.style.width = value + "%";
+  progressBarFill.style.width = 100 - value + "%";
 }
