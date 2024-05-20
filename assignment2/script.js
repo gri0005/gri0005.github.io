@@ -6,78 +6,87 @@ const progressBarEmpty = document.querySelector("#progress-bar-empty");
 const timerTimeSelector = document.querySelector("#timer-select");
 const timerInfo = document.querySelector("#timer-info");
 const countdownDisplay = document.querySelector("#time-remaining");
-let myInt;
-console.log(timerInfo.textContent);
+const ambBirdButton = document.querySelector("#amb-bird-btn");
+const birdSound = document.querySelector("#bird-sound");
+let isPlaying = false;
+let intervalID;
+let timerDuration = 10;
+let birdPlaying = false;
 
 // displays countdown length
 timerTimeSelector.addEventListener("change", setTimerText);
 function setTimerText() {
-  timerInfo.innerHTML = "timer is set for " + timerTimeSelector.value;
+  timerInfo.innerHTML =
+    "Setting the timer for " + timerTimeSelector.value + " minutes!";
+  timerDuration = timerTimeSelector.value * 60;
 }
 
 playPauseBtn.addEventListener("click", togglePlayPause);
+ambBirdButton.addEventListener("click", toggleBird);
 
+// toggles bird amb sounds on and off, only plays while the timer is going
+function toggleBird() {
+  if (!birdPlaying) {
+    ambBirdButton.classList.remove("ambs");
+    ambBirdButton.classList.add("clicked-ambs");
+    birdPlaying = true;
+    if (isPlaying) {
+      birdSound.play();
+    }
+  } else {
+    ambBirdButton.classList.remove("clicked-ambs");
+    ambBirdButton.classList.add("ambs");
+    birdSound.pause();
+    birdPlaying = false;
+  }
+}
+
+// triggers everything when play/stop button pressed
 function togglePlayPause() {
-  if (audio.paused || audio.ended) {
+  let intervalID;
+  if (!isPlaying) {
     audio.play();
     playPauseImg.src = "icons8-stop-90.png";
+    isPlaying = true;
+    intervalID = startTimer(timerDuration);
 
-    audio.addEventListener("timeupdate", updateProgressBar);
-
-    playPauseBtn.classList.add("inprog");
-    console.log(playPauseBtn.classList);
-  }
-
-  // Stop and reset everything:
-  else {
+    if (birdPlaying) {
+      birdSound.play();
+    }
+  } else {
     audio.pause();
+    birdSound.pause();
     audio.currentTime = 0;
     playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v1.png";
-    playPauseBtn.classList.remove("inprog");
-    console.log(playPauseBtn.classList);
-
-    playPauseBtn.classList.add("noprog");
-    console.log(playPauseBtn.classList);
-  }
-
-  decidingTimer();
-}
-
-// customised progress bar:
-
-function updateProgressBar() {
-  const value = (audio.currentTime / audio.duration) * 100;
-  progressBarFill.style.width = value + "%";
-  progressBarEmpty.style.width = 100 - value + "%";
-}
-
-// timer function fml feed me lunch
-
-function decidingTimer() {
-  if ((playPauseBtn.classList = "inprog")) {
-    var count = 60 * 0.5,
-      display = countdownDisplay;
-    console.log("commencing timer");
-    startTimer(count, display);
-  } else {
-    clearInterval(intervalId);
-    console.log("clearing timer");
+    isPlaying = false;
+    resetTimer(timerDuration);
   }
 }
 
-function startTimer(duration, display) {
+// customised shrinking progress bar, linked to timer not audio:
+function updateProgressBar(timer) {
+  console.log(intervalID);
+  const value = (timer / timerDuration) * 100;
+  progressBarEmpty.style.width = value + "%";
+  progressBarFill.style.width = 100 - value + "%";
+}
+
+// start the timer
+function startTimer(duration) {
   var timer = duration,
     minutes,
     seconds;
-  var intervalId = setInterval(function () {
+  intervalID = setInterval(function () {
     hours = parseInt(timer / (60 * 60), 10);
-    minutes = parseInt(timer / 60, 10);
+    minutes = parseInt((timer / 60) % 60, 10);
     seconds = parseInt(timer % 60, 10);
 
+    // display the time in the correct format
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
+    //display only MM:SS if timer is set for less than an hour
     if (hours > 0) {
       countdownDisplay.textContent =
         hours + ":" + (minutes == 60 ? "00" : minutes) + ":" + seconds;
@@ -85,28 +94,36 @@ function startTimer(duration, display) {
       countdownDisplay.textContent = minutes + ":" + seconds;
     }
 
+    // stop if it reaches 0
     if (--timer < 0) {
-      timer = duration;
-      playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v1.png";
+      togglePlayPause();
     }
+
+    // update the progress bar!
+    updateProgressBar(timer);
   }, 1000);
 }
 
-// }
+// clear and reset the timer to end everything on stop button click
+function resetTimer(duration) {
+  clearInterval(intervalID);
+  var timer = duration,
+    minutes,
+    seconds;
 
-//   document
-//     .getElementsByClassName("inprog")
-//     .addEventListener("click", function () {
-//       clearInterval(intervalId);
-//     });
-// }
+  hours = parseInt(timer / (60 * 60), 10);
+  minutes = parseInt((timer / 60) % 60, 10);
+  seconds = parseInt(timer % 60, 10);
 
-// window.onload = function () {
-//   var count = 60 * 0.5,
-//     display = countdownDisplay;
-//   // display.textContent = "00:"+count;
-//   // document.getElementsByClassName("noprog")
-//   //   .addEventListener("click", function () {
-//   //     startTimer(count, display);
-//   //   });
-// };
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  if (hours > 0) {
+    countdownDisplay.textContent =
+      hours + ":" + (minutes == 60 ? "00" : minutes) + ":" + seconds;
+  } else {
+    countdownDisplay.textContent = minutes + ":" + seconds;
+  }
+  updateProgressBar(timer);
+}

@@ -1,8 +1,8 @@
 :root {
-  --primary-bg-color: #f4f4f4;
+  --primary-bg-color: #d7f0d7;
   --text-color: #333;
   --main-bg-color: #333;
-  --main-text-color: #fff;
+  --main-text-color: #14884c;
   --main-btn-bg-color: #259b4c;
   --main-btn-hover-color: #0e7a32;
 }
@@ -16,7 +16,8 @@ ul {
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "rowdies", "Arial", sans-serif;
+  font-weight: 300;
   background-color: var(--primary-bg-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -25,8 +26,6 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-
-/* Add additional styles as needed */
 
 /* Create a container for the main content */
 .container {
@@ -44,55 +43,76 @@ header {
   width: 100%;
 }
 
-/* Navigation styling */
-/* nav {
-  margin-top: 20px;
-  text-align: center;
-} */
-/* 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-nav ul li {
-  margin-right: 20px;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text-color);
-} */
-
 /* Media player styling */
-.media-player {
+/* .media-player {
   width: 100%;
   margin: 0 auto;
+} */
+
+/* bird ambiance button styling unclicked */
+.ambs {
+  margin-top: 2rem;
+  background-color: var(--primary-bg-color);
+  border: solid;
+  border-color: var(--primary-bg-color);
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
 }
 
-.custom-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 10px;
-  width: 100%;
+/* bird amb button styling clicked */
+.clicked-ambs {
+  margin-top: 2rem;
+  border: solid;
+  background-color: #75c59c;
+  border-color: #86c0a2;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
 }
 
+/* timer selector styling */
+#timer-select {
+  width: 20rem;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* aesthetic styling of button and selector */
 .soothing {
   background-color: var(--main-btn-bg-color);
   border-radius: 5px;
   border-color: #88f3ac;
   border-style: solid;
-  height: 3rem;
-  border-width: 2px;
+  cursor: pointer;
 }
 
 .soothing:hover {
   background-color: #8ad2a2;
 }
 
+/* styling for container of timer related elements */
+.time-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: auto;
+  width: 20rem;
+  align-items: center;
+}
+
+h2 {
+  font-size: 4rem;
+  color: var(--main-text-color);
+  font-weight: 400;
+}
+
+option {
+  padding-left: 5rem;
+}
+
+/* button styling */
 #play-pause-btn {
   width: 6rem;
   height: 6rem;
@@ -112,6 +132,17 @@ nav a {
 #play-pause-img {
   width: 70%;
   margin: auto;
+}
+
+/* lots of progress bar styling */
+.custom-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 5rem;
+  width: 100%;
+  margin-bottom: 5rem;
 }
 
 .progress-bar {
@@ -147,14 +178,4 @@ footer {
   text-align: center;
   padding: 10px 0;
   width: 100%;
-}
-
-#timer-select {
-  border-radius: 5px;
-  border-color: #8ad2a2;
-  border-style: solid;
-  height: 3rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  margin: auto;
 }
