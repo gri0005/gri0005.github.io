@@ -10,6 +10,7 @@
   </head>
   <body>
     <div class="outer">
+      <!-- Right Arrow -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -22,6 +23,7 @@
           points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
         />
       </svg>
+      <!-- Left Arrow -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -35,6 +37,7 @@
         />
       </svg>
 
+      <!-- Slides and Photos -->
       <div class="inner" id="display1">
         <img src="images/1.jpg" />
       </div>
@@ -44,24 +47,12 @@
       <div class="inner" id="display3">
         <img src="images/3.jpg" />
       </div>
-      <!-- <div class="inner" id="display4">
-        <img src="images/4.jpg" />
-      </div> -->
       <div class="inner" id="display5">
         <img src="images/5.jpg" />
       </div>
-      <!-- <div class="inner" id="display6">
-        <img src="images/6.jpg" />
-      </div> -->
-      <!-- <div class="inner" id="display7">
-        <img src="images/7.jpg" />
-      </div> -->
       <div class="inner" id="display8">
         <img src="images/8.jpg" />
       </div>
-      <!-- <div class="inner" id="display9">
-        <img src="images/9.jpg" />
-      </div> -->
       <div class="inner" id="display10">
         <img src="images/10.jpg" />
       </div>
@@ -115,9 +106,13 @@
       </div>
     </div>
 
+    <!-- Unobtrusive footer with navigation features -->
     <section id="nav-detector">
+      <!-- button always visible at the bottom of the page -->
       <div id="bar"></div>
+      <!-- the content that appears when you click the bar/button -->
       <nav id="footer-nav">
+        <!-- arrows to card through the previews of the slides -->
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -142,9 +137,12 @@
             points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707"
           />
         </svg>
+
+        <!-- previews/links to all the slides. -->
         <div class="preview" id="preview-pane">
           <a class="p-inner" id="preview1" href="#display1">
             <img src="images/1.jpg" />
+            <!-- transparent grey box of the same dimensions as each image, to appear on hover -->
             <div class="hoverbox" style="width: 2.46458rem"></div
           ></a>
           <a class="p-inner" id="preview2" href="#display2">
@@ -155,30 +153,14 @@
             <img src="images/3.jpg" />
             <div class="hoverbox" style="width: 5.55208125rem"></div>
           </a>
-          <!-- <a class="p-inner" id="preview4" href="#display4">
-            <img src="images/4.jpg" />
-            <div class="hoverbox" style="width: 5.55208125rem"></div>
-          </a> -->
           <a class="p-inner" id="preview5" href="#display5">
             <img src="images/5.jpg" />
             <div class="hoverbox" style="width: 2.46458rem"></div>
           </a>
-          <!-- <a class="p-inner" id="preview6" href="#display6">
-            <img src="images/6.jpg" />
-            <div class="hoverbox" style="width: 2.46458rem"></div>
-          </a> -->
-          <!-- <a class="p-inner" id="preview7" href="#display7">
-            <img src="images/7.jpg" />
-            <div class="hoverbox" style="width: 5.540625rem"></div>
-          </a> -->
           <a class="p-inner" id="preview8" href="#display8">
             <img src="images/8.jpg" />
             <div class="hoverbox" style="width: 5.55208125rem"></div>
           </a>
-          <!-- <a class="p-inner" id="preview9" href="#display9">
-            <img src="images/9.jpg" />
-            <div class="hoverbox" style="width: 5.55208125rem"></div>
-          </a> -->
           <a class="p-inner" id="preview10" href="#display10">
             <img src="images/10.jpg" />
             <div class="hoverbox" style="width: 5.547919rem"></div>
@@ -212,10 +194,6 @@
             <img src="images/17.jpg" />
             <div class="hoverbox" style="width: 5.75416875rem"></div>
           </a>
-          <!-- <a class="p-inner" id="preview18" href="#display18">
-            <img src="images/18.jpg" />
-            <div class="hoverbox" style="width: 5.55208125rem"></div>
-          </a> -->
           <a class="p-inner" id="preview19" href="#display19">
             <img src="images/19.jpg" />
             <div class="hoverbox" style="width: 5.55208125rem"></div>
@@ -249,6 +227,7 @@
             <div class="hoverbox" style="width: 5.55208125rem"></div>
           </a>
         </div>
+        <!-- actual footer with credits -->
         <footer>
           <p>
             Images by Trent Parke used under fair dealing provisions for

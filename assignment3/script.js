@@ -16,11 +16,14 @@ previewLeft.addEventListener("click", prevScrollLeft);
 slideshow.addEventListener("scrollend", snapToScroll);
 detectorBar.addEventListener("click", footerAppear);
 
-// so that the footer closes when you click away but not when you click the side arrows
+// event listeners such that the footer closes when you click away but not when you click the side arrows
 imageDivArray.forEach(function (item) {
   item.addEventListener("click", closeFooter);
 });
 
+// scrolls through the images in the preview pane.
+// scrolls by a large increment because there are not that many photos,
+// so it will likely reach the end within one scroll, depending on viewport width
 function prevScrollRight() {
   previewPane.scrollTo({
     left: previewPane.scrollLeft + visualViewport.width,
@@ -101,5 +104,4 @@ function snapToScroll() {
     arrowLeft.classList.remove("arrownull");
     arrowLeft.style.cursor = "pointer";
   }
-  console.log(arrowRight.classList);
 }

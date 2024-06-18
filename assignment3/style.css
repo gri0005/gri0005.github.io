@@ -4,30 +4,34 @@ body {
   overflow: hidden;
 }
 
+/* the slideshow container */
 .outer {
   height: 100vh;
   display: flex;
   overflow-y: hidden;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge removes scrollbar */
+  scrollbar-width: none; /* Firefox removes scrollbar*/
 }
 
 .outer::-webkit-scrollbar {
-  display: none; /* Chrome, safari, opera */
+  display: none; /* Chrome, safari, opera removes scrollbar*/
 }
 
+/* div for each slide. using vu to be modular and consistent */
 .inner {
   height: 100vh;
   width: 100vw;
   flex-shrink: 0;
 }
 
+/* the images on each slide */
 .inner > img {
   height: 100%;
   max-width: 98vw;
   margin: auto;
 }
 
+/* the container for the preview/links in the footer-style div */
 .preview {
   padding-top: 0.3rem;
   padding-left: 0.3rem;
@@ -47,6 +51,7 @@ body {
   display: none; /* Chrome, safari, opera */
 }
 
+/* div containers for each individual photo and accompanying grey box */
 .p-inner {
   position: relative;
   cursor: pointer;
@@ -54,18 +59,22 @@ body {
   flex-shrink: 0;
 }
 
+/* grey box default state */
 .hoverbox {
   position: absolute;
   height: 3.7rem;
   top: 0;
   background-color: rgba(255, 255, 255, 0);
-}
-
-.hoverbox:hover {
-  background-color: rgba(114, 114, 114, 0.56);
+  transition: background-color ease-out 0.3s;
   border-radius: 7px;
 }
 
+/* grey box hover state */
+.hoverbox:hover {
+  background-color: rgba(114, 114, 114, 0.56);
+}
+
+/* individual preview img styling */
 .p-inner > img {
   height: 100%;
   max-width: 100%;
@@ -75,8 +84,8 @@ body {
   border-radius: 7px;
 }
 
+/* right arrow for slideshow */
 #arrowicon-right {
-  /* fill: rgba(146, 77, 99, 1); */
   z-index: 2000;
   position: absolute;
   margin-top: 50vh;
@@ -85,10 +94,7 @@ body {
   transition: fill ease-out 0.3s;
 }
 
-.arrowthere:hover {
-  fill: rgba(164, 117, 132, 1);
-}
-
+/* left arrow for slideshow */
 #arrowicon-left {
   z-index: 2000;
   position: absolute;
@@ -99,14 +105,23 @@ body {
   transition: fill ease-out 0.3s;
 }
 
+/* class for when arrows are needed */
 .arrowthere {
   fill: rgba(146, 77, 99, 1);
 }
 
+.arrowthere:hover {
+  fill: rgba(164, 117, 132, 1);
+}
+
+/* class for when arrows are not needed i.e.
+ left arrow on first slide 
+and right arrow on last slide */
 .arrownull {
   fill: rgba(146, 77, 99, 0);
 }
 
+/* footer-style div */
 #footer-nav {
   background-color: rgba(149, 104, 118, 0.4);
   position: absolute;
@@ -116,6 +131,7 @@ body {
   bottom: 0rem;
 }
 
+/* container for footer-style div and button that opens it */
 #nav-detector {
   position: absolute;
   z-index: 3000;
@@ -125,6 +141,7 @@ body {
   transition: bottom ease-out 0.2s;
 }
 
+/* actual conventional footer info is in there */
 footer {
   height: 2rem;
   padding-top: 0.5rem;
@@ -132,6 +149,7 @@ footer {
   text-align: center;
 }
 
+/* the unobtrusive button that opens the footer-style div */
 #bar {
   border: solid rgb(164, 117, 132);
   border-radius: 50px;
@@ -153,6 +171,7 @@ a {
   color: rgb(231, 191, 252);
 }
 
+/* arrows for the preview section*/
 #arrowpreview-right {
   position: absolute;
   right: 0.3rem;
@@ -170,6 +189,7 @@ a {
   z-index: 1000;
 }
 
+/* class for both arrows in the preview section */
 .arrowpreview {
   border: solid rgb(214, 126, 126) 2px;
   border-radius: 50px;
